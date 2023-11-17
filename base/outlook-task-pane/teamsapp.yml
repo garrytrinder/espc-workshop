@@ -58,4 +58,4 @@ deploy:
       artifactFolder: dist
       # The resource id of the cloud resource to be deployed to
       resourceId: ${{ADDIN_AZURE_STORAGE_RESOURCE_ID}}
-projectId: 0597eeab-f40a-4023-85fa-175f2577fd56
+
