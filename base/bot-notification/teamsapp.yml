@@ -11,7 +11,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: bot-notification-timer-${{TEAMSFX_ENV}}
+      name: bot-notification-${{TEAMSFX_ENV}}
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:
@@ -21,7 +21,7 @@ provision:
   - uses: botAadApp/create
     with:
       # The Azure Active Directory application's display name
-      name: bot-notification-timer-${{TEAMSFX_ENV}}
+      name: bot-notification-${{TEAMSFX_ENV}}
     writeToEnvironmentFile:
       # The Azure Active Directory application's client id created for bot.
       botId: BOT_ID
@@ -134,4 +134,4 @@ publish:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: c1df986b-d33d-43c6-bb48-1a8df40394f2
+projectId: 1878fc2f-6d9d-46b7-be37-984cb95b3119

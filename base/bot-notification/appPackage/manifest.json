@@ -15,12 +15,12 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "bot-notification-http-timer-${{TEAMSFX_ENV}}",
-        "full": "ful name for bot-notification-http-timer"
+        "short": "bot-notification-${{TEAMSFX_ENV}}",
+        "full": "ful name for bot-notification"
     },
     "description": {
-        "short": "short description for bot-notification-http-timer",
-        "full": "full description for bot-notification-http-timer"
+        "short": "short description for bot-notification",
+        "full": "full description for bot-notification"
     },
     "accentColor": "#FFFFFF",
     "bots": [
