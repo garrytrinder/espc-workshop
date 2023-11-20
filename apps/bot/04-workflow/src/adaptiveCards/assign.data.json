@@ -1,0 +1,8 @@
+{
+    "agentId": "4f1c4f25-b242-4f02-9b2a-6e3403f3b7b1",
+    "agentName": "Nestor Wilke",
+    "product": "Contoso Quad",
+    "title": "Battery Life Issue",
+    "description": "My Contoso Quad's battery doesn't seem to last as long as advertised. What could be the issue?",
+    "type": "Fault"
+}
