@@ -25,6 +25,12 @@
     },
     "functionStorageSKU": {
       "value": "Standard_LRS"
+    },
+    "spoHostname": {
+      "value": "${{SPO_HOSTNAME}}"
+    },
+    "spoSiteUrl": {
+      "value": "${{SPO_SITE_URL}}"
     }
   }
 }

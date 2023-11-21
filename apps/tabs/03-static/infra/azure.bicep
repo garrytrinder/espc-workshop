@@ -8,6 +8,8 @@ param aadAppTenantId string
 param aadAppOauthAuthorityHost string
 @secure()
 param aadAppClientSecret string
+param spoHostname string
+param spoSiteUrl string
 
 param storageName string = resourceBaseName
 param location string = resourceGroup().location
@@ -124,6 +126,14 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'WEBSITE_AUTH_AAD_ACL'
           value: '{"allowed_client_applications": [${allowedClientApplications}]}'
+        }
+        {
+          name: 'SPO_HOSTNAME'
+          value: spoHostname
+        }
+        {
+          name: 'SPO_SITE_URL'
+          value: spoSiteUrl
         }
       ]
       ftpsState: 'FtpsOnly'
