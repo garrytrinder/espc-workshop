@@ -33,7 +33,25 @@ provision:
       messagingEndpoint: ${{BOT_ENDPOINT}}/api/messages
       description: ""
       channels:
-        - name: msteams 
+        - name: msteams
+    
+  - uses: aadApp/create
+    with:
+      name: bot-product-support-app-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMyOrg
+    writeToEnvironmentFile:
+      clientId: AAD_APP_CLIENT_ID
+      clientSecret: SECRET_AAD_APP_CLIENT_SECRET
+      objectId: AAD_APP_OBJECT_ID
+      tenantId: AAD_APP_TENANT_ID
+      authority: AAD_APP_OAUTH_AUTHORITY
+      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
+
+  - uses: aadApp/update
+    with:
+      manifestPath: ./aad.manifest.json
+      outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json  
 
   # Validate using manifest schema
   - uses: teamsApp/validateManifest
@@ -87,3 +105,7 @@ deploy:
       envs:
         BOT_ID: ${{BOT_ID}}
         BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        M365_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
+        M365_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}
+        M365_TENANT_ID: ${{AAD_APP_TENANT_ID}}
+        M365_AUTHORITY_HOST: ${{AAD_APP_OAUTH_AUTHORITY_HOST}}
