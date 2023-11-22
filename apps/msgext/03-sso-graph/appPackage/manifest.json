@@ -11,11 +11,11 @@
         "termsOfUseUrl": "https://www.example.com/privacy"
     },
     "icons": {
-        "color": "color.png",
+        "color": "color-${{TEAMSFX_ENV}}.png",
         "outline": "outline.png"
     },
     "name": {
-        "short": "Product support ME",
+        "short": "PS ME",
         "full": "Product support message extension"
     },
     "description": {

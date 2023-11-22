@@ -48,30 +48,27 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
     httpsOnly: true
     siteConfig: {
       alwaysOn: true
-      appSettings: [
-        {
-          name: 'WEBSITE_RUN_FROM_PACKAGE'
-          value: '1' // Run Azure App Service from a package file
-        }
-        {
-          name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '~18' // Set NodeJS version to 18.x for your site
-        }
-        {
-          name: 'RUNNING_ON_AZURE'
-          value: '1'
-        }
-        {
-          name: 'BOT_ID'
-          value: botAadAppClientId
-        }
-        {
-          name: 'BOT_PASSWORD'
-          value: botAadAppClientSecret
-        }
-      ]
       ftpsState: 'FtpsOnly'
     }
+  }
+}
+
+resource webAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
+  name: '${webAppName}/appsettings'
+  properties: {
+    WEBSITE_RUN_FROM_PACKAGE: '1'
+    WEBSITE_NODE_DEFAULT_VERSION: '~18'
+    RUNNING_ON_AZURE: '1'
+    M365_CLIENT_ID: m365ClientId
+    M365_CLIENT_SECRET: m365ClientSecret
+    INITIATE_LOGIN_ENDPOINT: uri('https://${webApp.properties.defaultHostName}', 'auth-start.html')
+    M365_AUTHORITY_HOST: m365OauthAuthorityHost
+    M365_TENANT_ID: m365TenantId
+    M365_APPLICATION_ID_URI: m365ApplicationIdUri
+    BOT_ID: botAadAppClientId
+    BOT_PASSWORD: botAadAppClientSecret
+    SPO_HOSTNAME: spoHostname
+    SPO_SITE_URL: spoSiteUrl
   }
 }
 
@@ -83,23 +80,6 @@ module azureBotRegistration './botRegistration/azurebot.bicep' = {
     botAadAppClientId: botAadAppClientId
     botAppDomain: webApp.properties.defaultHostName
     botDisplayName: botDisplayName
-  }
-}
-
-resource webAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
-  name: '${webAppName}/appsettings'
-  properties: {
-    M365_CLIENT_ID: m365ClientId
-    M365_CLIENT_SECRET: m365ClientSecret
-    INITIATE_LOGIN_ENDPOINT: uri('https://${webApp.properties.defaultHostName}', 'auth-start.html')
-    M365_AUTHORITY_HOST: m365OauthAuthorityHost
-    M365_TENANT_ID: m365TenantId
-    M365_APPLICATION_ID_URI: m365ApplicationIdUri
-    BOT_ID: botAadAppClientId
-    BOT_PASSWORD: botAadAppClientSecret
-    SPO_HOSTNAME: spoHostname
-    SPO_SITE_URL: spoSiteUrl
-    RUNNING_ON_AZURE: '1'
   }
 }
 

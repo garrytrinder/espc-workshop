@@ -11,7 +11,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: Product support ME
+      name: msgext-product-support${{APP_NAME_SUFFIX}}
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:
@@ -21,30 +21,12 @@ provision:
   - uses: botAadApp/create
     with:
       # The Microsoft Entra application's display name
-      name: Product support ME
+      name: msgext-product-support${{APP_NAME_SUFFIX}}
     writeToEnvironmentFile:
       # The Microsoft Entra application's client id created for bot.
       botId: BOT_ID
       # The Microsoft Entra application's client secret created for bot.
       botPassword: SECRET_BOT_PASSWORD
-
-  - uses: aadApp/create
-    with:
-      name: msgext-product-support-${{TEAMSFX_ENV}}
-      generateClientSecret: true
-      signInAudience: AzureADMyOrg
-    writeToEnvironmentFile:
-      clientId: AAD_APP_CLIENT_ID
-      clientSecret: SECRET_AAD_APP_CLIENT_SECRET
-      objectId: AAD_APP_OBJECT_ID
-      tenantId: AAD_APP_TENANT_ID
-      authority: AAD_APP_OAUTH_AUTHORITY
-      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
-
-  - uses: aadApp/update
-    with:
-      manifestPath: ./aad.manifest.json
-      outputFilePath : ./build/aad.manifest.${{TEAMSFX_ENV}}.json
 
   - uses: arm/deploy # Deploy given ARM templates parallelly.
     with:
@@ -70,6 +52,24 @@ provision:
       # Teams Toolkit will download this bicep CLI version from github for you,
       # will use bicep CLI in PATH if you remove this config.
       bicepCliVersion: v0.9.1
+
+  - uses: aadApp/create
+    with:
+      name: msgext-product-support-app-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMyOrg
+    writeToEnvironmentFile:
+      clientId: AAD_APP_CLIENT_ID
+      clientSecret: SECRET_AAD_APP_CLIENT_SECRET
+      objectId: AAD_APP_OBJECT_ID
+      tenantId: AAD_APP_TENANT_ID
+      authority: AAD_APP_OAUTH_AUTHORITY
+      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
+
+  - uses: aadApp/update
+    with:
+      manifestPath: ./aad.manifest.json
+      outputFilePath : ./build/aad.manifest.${{TEAMSFX_ENV}}.json
 
   # Validate using manifest schema
   - uses: teamsApp/validateManifest

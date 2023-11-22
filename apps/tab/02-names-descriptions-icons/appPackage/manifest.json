@@ -11,12 +11,12 @@
         "termsOfUseUrl": "${{TAB_ENDPOINT}}/index.html#/termsofuse"
     },
     "icons": {
-        "color": "color.png",
+        "color": "color-${{TEAMSFX_ENV}}.png",
         "outline": "outline.png"
     },
     "name": {
-        "short": "PS Tabs",
-        "full": "Product support Tabs"
+        "short": "PS Tab",
+        "full": "Product support Tab"
     },
     "description": {
         "short": "View product customer scripts.",

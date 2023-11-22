@@ -11,17 +11,17 @@
         "termsOfUseUrl": "https://www.example.com/privacy"
     },
     "icons": {
-        "color": "color.png",
+        "color": "color-${{TEAMSFX_ENV}}.png",
         "outline": "outline.png"
     },
     "name": {
-        "short": "Product support ME",
+        "short": "PS ME",
         "full": "Product support message extension"
     },
     "description": {
         "short": "Search products in the Product support SharePoint Online team site.",
         "full": "Search or initiate actions on products in the Product support SharePoint Online team site from the compose message area, the command box, or directly from a message in Microsoft Teams. Additionally search for products directly from a new Microsoft Outlook email."
-    },    
+    },
     "accentColor": "#FFFFFF",
     "bots": [],
     "composeExtensions": [
