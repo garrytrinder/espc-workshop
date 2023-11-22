@@ -57,7 +57,7 @@ export class SearchApp extends TeamsActivityHandler {
         // get the site id from the site url and get the items from the Products list
         const { sharepointIds } = await graphClient.api(`/sites/${config.spoHostname}:/${config.spoSiteUrl}`).select("sharepointIds").get();
         const { value: items } = await graphClient.api(`/sites/${sharepointIds.siteId}/lists/Products/items?expand=fields&select=${listFields.join(",")}&$filter=startswith(fields/Title,'${query.parameters[0].value}')`).get();
-        
+
         // get the drives from the site and find the Product Imagery drive
         const { value: drives } = await graphClient.api(`sites/${sharepointIds.siteId}/drives`).select(["id", "name"]).get();
         const { id: productImageryDriveId } = drives.find(drive => drive.name === "Product Imagery");
@@ -65,26 +65,25 @@ export class SearchApp extends TeamsActivityHandler {
         const attachments = [];
         await Promise.all(items.map(async (item) => {
           const { PhotoSubmission: photoUrl, Title, RetailCategory } = item.fields;
-
-          // get the photo from the drive and convert to data uri
           const fileName = photoUrl.split("/").reverse()[0];
-          const { id: driveItemId, file: driveItemFile } = await graphClient.api(`sites/${sharepointIds.siteId}/drives/${productImageryDriveId}/root:/${fileName}`).get();
-          const driveItemContent = await graphClient.api(`sites/${sharepointIds.siteId}/drives/${productImageryDriveId}/items/${driveItemId}/content`).responseType(ResponseType.ARRAYBUFFER).get();
-          const photoDataUri = `data:${driveItemFile.mimeType};base64,${Buffer.from(driveItemContent).toString('base64')}`;
+
+          // get the photo from the drive and return thumbnail
+          const { id: driveItemId } = await graphClient.api(`sites/${sharepointIds.siteId}/drives/${productImageryDriveId}/root:/${fileName}`).get();
+          const { value: thumbnails } = await graphClient.api(`sites/${sharepointIds.siteId}/drives/${productImageryDriveId}/items/${driveItemId}/thumbnails`).get();
 
           // render adaptive card to send in message
           const template = new ACData.Template(productCard);
           const card = template.expand({
             $root: {
               ...item.fields,
-              PhotoSubmission: photoDataUri,
+              PhotoSubmission: thumbnails[0].large.url,
               spoHostname: config.spoHostname,
               spoSiteUrl: config.spoSiteUrl,
             },
           });
 
           // render thumbnail card to show in search results
-          const cardImages: CardImage[] = [{ url: photoDataUri, alt: Title }];
+          const cardImages: CardImage[] = [{ url: thumbnails[0].small.url, alt: Title }];
           const preview = CardFactory.thumbnailCard(Title, RetailCategory, cardImages);
 
           // create attachment using adaptive card and thumbnail card
