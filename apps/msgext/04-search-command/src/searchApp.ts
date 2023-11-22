@@ -65,9 +65,9 @@ export class SearchApp extends TeamsActivityHandler {
         const attachments = [];
         await Promise.all(items.map(async (item) => {
           const { PhotoSubmission: photoUrl, Title, RetailCategory } = item.fields;
+          
+          // get the photo from the drive and return thumbnails
           const fileName = photoUrl.split("/").reverse()[0];
-
-          // get the photo from the drive and return thumbnail
           const { id: driveItemId } = await graphClient.api(`sites/${sharepointIds.siteId}/drives/${productImageryDriveId}/root:/${fileName}`).get();
           const { value: thumbnails } = await graphClient.api(`sites/${sharepointIds.siteId}/drives/${productImageryDriveId}/items/${driveItemId}/thumbnails`).get();
 
