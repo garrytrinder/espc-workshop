@@ -25,7 +25,7 @@
                     "type": "Role"
                 },
                 {
-                    "id": "Sites.ReadWrite.All",
+                    "id": "Sites.Read.All",
                     "type": "Role"
                 }
             ]

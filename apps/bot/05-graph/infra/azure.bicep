@@ -16,6 +16,12 @@ param storageSKU string
 @maxLength(42)
 param botDisplayName string
 
+param m365ClientId string
+@secure()
+param m365ClientSecret string
+param m365TenantId string
+param m365OauthAuthorityHost string
+
 param serverfarmsName string = resourceBaseName
 param functionAppName string = resourceBaseName
 param location string = resourceGroup().location
@@ -95,6 +101,22 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'SCM_ZIPDEPLOY_DONOT_PRESERVE_FILETIME'
           value: '1' // Zipdeploy files will always be updated. Detail: https://aka.ms/teamsfx-zipdeploy-donot-preserve-filetime
+        }
+        {
+          name: 'M365_CLIENT_ID'
+          value: m365ClientId
+        }
+        {
+          name: 'M365_CLIENT_SECRET'
+          value: m365ClientSecret
+        }
+        {
+          name: 'M365_TENANT_ID'
+          value: m365TenantId
+        }
+        {
+          name: 'M365_AUTHORITY_HOST'
+          value: m365OauthAuthorityHost
         }
       ]
       ftpsState: 'FtpsOnly'

@@ -19,6 +19,27 @@
     },
     "botDisplayName": {
       "value": "bot-product-support"
+    },
+    "m365ClientId": {
+      "value": "${{AAD_APP_CLIENT_ID}}"
+    },
+    "m365ClientSecret": {
+      "value": "${{SECRET_AAD_APP_CLIENT_SECRET}}"
+    },
+    "m365TenantId": {
+      "value": "${{AAD_APP_TENANT_ID}}"
+    },
+    "m365OauthAuthorityHost": {
+      "value": "${{AAD_APP_OAUTH_AUTHORITY_HOST}}"
+    },
+    "spoHostname":{
+      "value": "${{SPO_HOSTNAME}}"
+    },
+    "spoSiteUrl":{
+      "value": "${{SPO_SITE_URL}}"
+    },
+    "botEndpoint":{
+      "value": "${{BOT_FUNCTION_ENDPOINT}}"
     }
   }
 }
