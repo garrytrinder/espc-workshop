@@ -28,6 +28,19 @@ provision:
       # The Microsoft Entra application's client secret created for bot.
       botPassword: SECRET_BOT_PASSWORD
 
+  - uses: aadApp/create
+    with:
+      name: msgext-product-support-app-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMyOrg
+    writeToEnvironmentFile:
+      clientId: AAD_APP_CLIENT_ID
+      clientSecret: SECRET_AAD_APP_CLIENT_SECRET
+      objectId: AAD_APP_OBJECT_ID
+      tenantId: AAD_APP_TENANT_ID
+      authority: AAD_APP_OAUTH_AUTHORITY
+      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
+
   - uses: arm/deploy # Deploy given ARM templates parallelly.
     with:
       # AZURE_SUBSCRIPTION_ID is a built-in environment variable,
@@ -69,7 +82,7 @@ provision:
   - uses: aadApp/update
     with:
       manifestPath: ./aad.manifest.json
-      outputFilePath : ./build/aad.manifest.${{TEAMSFX_ENV}}.json
+      outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
 
   # Validate using manifest schema
   - uses: teamsApp/validateManifest
@@ -167,4 +180,4 @@ publish:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: 7f51d329-bcd7-41c5-b2ae-59d80cf47ca2
+projectId: a67cfbbe-bded-4cc3-8e0f-32e6db209e69

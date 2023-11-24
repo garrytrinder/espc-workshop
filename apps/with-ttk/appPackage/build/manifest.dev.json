@@ -1,0 +1,46 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "version": "1.0.0",
+    "manifestVersion": "1.16",
+    "id": "fa0537d8-4dc6-467b-a090-dbe744cb4132",
+    "packageName": "com.package.name",
+    "name": {
+        "short": "With TTK",
+        "full": "With Teams Toolkit"
+    },
+    "developer": {
+        "name": "Contoso",
+        "mpnId": "",
+        "websiteUrl": "https://example.com",
+        "privacyUrl": "https://example.com/privacy",
+        "termsOfUseUrl": "https://example.com"
+    },
+    "description": {
+        "short": "A sample app that uses TTK",
+        "full": "A sample app that uses TTK with your own stack"
+    },
+    "icons": {
+        "outline": "outline.png",
+        "color": "color.png"
+    },
+    "accentColor": "#FFFFFF",
+    "staticTabs": [
+        {
+            "entityId": "ed7ca78f-939b-42d8-885b-51617b275a9d",
+            "name": "My Tab",
+            "contentUrl": "https://k474759z.uks1.devtunnels.ms:1234",
+            "scopes": [
+                "personal"
+            ]
+        },
+        {
+            "entityId": "about",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "validDomains": [
+        "k474759z.uks1.devtunnels.ms"
+    ]
+}

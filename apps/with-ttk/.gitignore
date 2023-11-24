@@ -1,0 +1,9 @@
+# App
+.parcel-cache
+dist
+node_modules
+.env
+
+# TTK
+env
+appPackage\build
