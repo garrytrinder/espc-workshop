@@ -5,5 +5,5 @@ node_modules
 .env
 
 # TTK
-env
+.env.*
 appPackage\build

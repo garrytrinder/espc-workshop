@@ -28,7 +28,7 @@
         {
             "entityId": "ed7ca78f-939b-42d8-885b-51617b275a9d",
             "name": "My Tab",
-            "contentUrl": "https://k474759z.uks1.devtunnels.ms:1234",
+            "contentUrl": "https://df9vb034.uks1.devtunnels.ms:1234",
             "scopes": [
                 "personal"
             ]
@@ -41,6 +41,6 @@
         }
     ],
     "validDomains": [
-        "k474759z.uks1.devtunnels.ms"
+        "df9vb034.uks1.devtunnels.ms"
     ]
 }

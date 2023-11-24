@@ -15,26 +15,13 @@
             },
             "internalConsoleOptions": "neverOpen",
             "postDebugTask": "Terminate All Tasks"
-        },
-        {
-            "name": "Attach to Local Service",
-            "type": "node",
-            "request": "attach",
-            "port": 1234,
-            "restart": true,
-            "presentation": {
-                "group": "all",
-                "hidden": true
-            },
-            "internalConsoleOptions": "neverOpen"
-        },
+        }
     ],
     "compounds": [
         {
             "name": "Debug",
             "configurations": [
                 "Launch App (Edge)",
-                "Attach to Local Service"
             ],
             "preLaunchTask": "Start Teams App Locally",
             "presentation": {
