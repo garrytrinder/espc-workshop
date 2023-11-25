@@ -1,0 +1,86 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.6",
+  "msteams": {
+      "width": "Full"
+  },
+  "body": [
+      {
+          "id": "form",
+          "type": "Container",
+          "items": [
+              {
+                  "type": "TextBlock",
+                  "text": "New support query",
+                  "wrap": true,
+                  "style": "heading",
+                  "size": "extraLarge"
+              },
+              {
+                  "type": "TextBlock",
+                  "text": "Product"
+              },
+              {
+                  "id": "product",
+                  "type": "Input.ChoiceSet",
+                  "style": "compact",
+                  "choices": [
+                      {
+                          "$data": "${products}",
+                          "title": "${title}",
+                          "value": "${title}"
+                      }
+                  ],
+                  "isRequired": true
+              },
+              {
+                  "type": "TextBlock",
+                  "text": "Type"
+              },
+              {
+                  "id": "type",
+                  "type": "Input.ChoiceSet",
+                  "style": "expanded",
+                  "choices": [
+                      {
+                          "title": "Fault",
+                          "value": "Fault"
+                      },
+                      {
+                          "title": "Inquiry",
+                          "value": "Inquiry"
+                      }
+                  ],
+                  "isRequired": true
+              },
+              {
+                  "type": "TextBlock",
+                  "text": "Title"
+              },
+              {
+                  "id": "title",
+                  "type": "Input.Text",
+                  "isRequired": true
+              },
+              {
+                  "type": "TextBlock",
+                  "text": "Description"
+              },
+              {
+                  "id": "description",
+                  "type": "Input.Text",
+                  "isMultiline": true,
+                  "isRequired": true
+              }
+          ]
+      }
+  ],
+  "actions": [
+      {
+          "type": "Action.Execute",
+          "title": "Save",
+          "verb": "new"
+      }
+  ]
+}

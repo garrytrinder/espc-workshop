@@ -1,0 +1,94 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.6",
+  "msteams": {
+      "width": "Full"
+  },
+  "body": [
+      {
+          "type": "Container",
+          "items": [
+              {
+                  "type": "TextBlock",
+                  "text": "🙋 ${title}",
+                  "wrap": true,
+                  "style": "heading",
+                  "size": "extraLarge"
+              },
+              {
+                  "type": "TextBlock",
+                  "text": "${product} ${type}",
+                  "wrap": true
+              },
+              {
+                  "type": "TextBlock",
+                  "text": "${description}",
+                  "fontType": "monospace",
+                  "wrap": true
+              }
+          ]
+      },
+      {
+          "id": "form",
+          "type": "Container",
+          "items": [
+              {
+                  "type": "TextBlock",
+                  "text": "👩‍💻 Assigned to: ${agentName}",
+                  "wrap": true
+              },
+              {
+                  "id": "comment",
+                  "type": "Input.Text",
+                  "placeholder": "Add a comment",
+                  "isMultiline": true,
+                  "isRequired": true
+              },
+              {
+                  "id": "agentId",
+                  "type": "Input.Text",
+                  "value": "${agentId}",
+                  "isVisible": false
+              },
+              {
+                  "id": "agentName",
+                  "type": "Input.Text",
+                  "value": "${agentName}",
+                  "isVisible": false
+              },
+              {
+                  "id": "title",
+                  "type": "Input.Text",
+                  "value": "${title}",
+                  "isVisible": false
+              },
+              {
+                  "id": "description",
+                  "type": "Input.Text",
+                  "value": "${description}",
+                  "isVisible": false
+              },
+              {
+                  "id": "product",
+                  "type": "Input.Text",
+                  "value": "${product}",
+                  "isVisible": false
+              },
+              {
+                  "id": "type",
+                  "type": "Input.Text",
+                  "value": "${type}",
+                  "isVisible": false
+              }
+          ]
+      }
+  ],
+  "actions": [
+      {
+          "type": "Action.Execute",
+          "title": "Close",
+          "verb": "close"
+      }
+  ]
+}

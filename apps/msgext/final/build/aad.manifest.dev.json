@@ -1,0 +1,101 @@
+{
+    "id": "8801d643-3dac-42d7-adb5-23f417d48063",
+    "appId": "84786e89-813e-4a2c-b8ab-d6d9e785a1ad",
+    "name": "msgext-product-support-app-dev",
+    "accessTokenAcceptedVersion": 2,
+    "signInAudience": "AzureADMyOrg",
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "idtyp",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+    "requiredResourceAccess": [
+        {
+            "resourceAppId": "00000003-0000-0000-c000-000000000000",
+            "resourceAccess": [
+                {
+                    "id": "205e70e5-aba6-4c52-a976-6d2d46c48043",
+                    "type": "Scope"
+                }
+            ]
+        }
+    ],
+    "oauth2Permissions": [
+        {
+            "adminConsentDescription": "Allows Teams to call the app's web APIs as the current user.",
+            "adminConsentDisplayName": "Teams can access app's web APIs",
+            "id": "97ab1a40-bb2e-4184-9045-80adec5eadcf",
+            "isEnabled": true,
+            "type": "User",
+            "userConsentDescription": "Enable Teams to call this app's web APIs with the same rights that you have",
+            "userConsentDisplayName": "Teams can access app's web APIs and make requests on your behalf",
+            "value": "access_as_user"
+        }
+    ],
+    "preAuthorizedApplications": [
+        {
+            "appId": "1fec8e78-bce4-4aaf-ab1b-5451cc387264",
+            "permissionIds": [
+                "97ab1a40-bb2e-4184-9045-80adec5eadcf"
+            ]
+        },
+        {
+            "appId": "5e3ce6c0-2b1f-4285-8d4b-75ee78787346",
+            "permissionIds": [
+                "97ab1a40-bb2e-4184-9045-80adec5eadcf"
+            ]
+        },
+        {
+            "appId": "d3590ed6-52b3-4102-aeff-aad2292ab01c",
+            "permissionIds": [
+                "97ab1a40-bb2e-4184-9045-80adec5eadcf"
+            ]
+        },
+        {
+            "appId": "00000002-0000-0ff1-ce00-000000000000",
+            "permissionIds": [
+                "97ab1a40-bb2e-4184-9045-80adec5eadcf"
+            ]
+        },
+        {
+            "appId": "bc59ab01-8403-45c6-8796-ac3ef710b3e3",
+            "permissionIds": [
+                "97ab1a40-bb2e-4184-9045-80adec5eadcf"
+            ]
+        },
+        {
+            "appId": "0ec893e0-5785-4de6-99da-4ed124e5296c",
+            "permissionIds": [
+                "97ab1a40-bb2e-4184-9045-80adec5eadcf"
+            ]
+        },
+        {
+            "appId": "4765445b-32c6-49b0-83e6-1d93765276ca",
+            "permissionIds": [
+                "97ab1a40-bb2e-4184-9045-80adec5eadcf"
+            ]
+        },
+        {
+            "appId": "4345a7b9-9a63-4910-a426-35363201d503",
+            "permissionIds": [
+                "97ab1a40-bb2e-4184-9045-80adec5eadcf"
+            ]
+        }
+    ],
+    "identifierUris": [
+        "api://botid-efff433b-660f-4e25-aa53-51464be5c906"
+    ],
+    "replyUrlsWithType": [
+        {
+            "url": "https://mebc8530.azurewebsites.net/auth-end.html",
+            "type": "Web"
+        }
+    ]
+}

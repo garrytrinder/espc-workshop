@@ -1,0 +1,16 @@
+{
+  "products": [
+      {
+          "title": "Product 1",
+          "value": "Product 1"
+      },
+      {
+          "title": "Product 2",
+          "value": "Product 2"
+      },
+      {
+          "title": "Product 3",
+          "value": "Product 3"
+      }
+  ]
+}
